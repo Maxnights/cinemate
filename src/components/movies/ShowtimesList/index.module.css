@@ -26,7 +26,8 @@
       rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0) 70%
     ),
-    /* собственно картинка */ url("../../../assets/images/backgrounds/showtimes-bg.jpg") center bottom /
+    /* собственно картинка */
+      url("../../../assets/images/backgrounds/showtimes-bg.jpg") center bottom /
       cover no-repeat;
   filter: blur(30px) brightness(0.9);
   opacity: 0.5;

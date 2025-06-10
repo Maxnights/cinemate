@@ -10,7 +10,7 @@
   margin: 0 -50vw;
   width: 100vw;
   background: var(--color-bg);
-  padding: 40px 0;
+  padding: 40px 0 10px;
   box-sizing: border-box;
 }
 
@@ -109,7 +109,7 @@
 .custom-arrow {
   all: unset;
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   z-index: 5;
   font-size: 40px;
