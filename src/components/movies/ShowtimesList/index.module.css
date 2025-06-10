@@ -1,0 +1,233 @@
+/* src/components/ShowtimesList.css */
+
+/* полный-width контейнер для фонового эффекта */
+.showtimes-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: visible;
+}
+
+/* фоновое размытое изображение + градиент сверху */
+.showtimes-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1000px; /* подкорректируйте по желанию */
+  background:
+    /* сверху чёрная полупрозрачность -> прозрачность */ linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    /* собственно картинка */ url("../../../assets/images/backgrounds/showtimes-bg.jpg") center bottom /
+      cover no-repeat;
+  filter: blur(30px) brightness(0.9);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* контейнер с ограниченной шириной под ваши карточки */
+.showtimes-container {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 16px;
+  z-index: 2;
+}
+
+/* сам список киносеансов */
+.showtimes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* каждая карточка фильма */
+.showtimes-list__item {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* блок с постером и кнопкой ▶ */
+.showtimes-list__poster {
+  position: relative;
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.showtimes-list__poster img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.showtimes-list__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* контент карточки */
+.showtimes-list__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* header: жанры, название, метаданные */
+.showtimes-list__header .genres,
+.showtimes-list__header .meta {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.showtimes-list__header .title {
+  font-size: 20px;
+  margin: 0.25rem 0;
+  color: var(--color-light);
+}
+
+/* описание */
+.desc {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ссылка «See full details» */
+.details-link {
+  color: #fc7f26;
+  font-size: 17px;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+.details-link .arrow {
+  margin-left: 0.25rem;
+}
+
+/* блок с кнопками сеансов */
+.showtimes-list__times {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* общие стили «пилюли» */
+.showtime-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.showtime-pill:hover {
+  opacity: 0.8;
+}
+
+/* время внутри */
+.pill__time {
+  background: #000;
+  color: #ccc;
+  padding: 8px 12px;
+  font-size: 12px;
+  border: none;
+}
+
+/* формат внутри */
+.pill__format {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+}
+
+/* 2D-пилюля */
+.showtime-pill.format-2d {
+  border-color: #ffa600;
+}
+.showtime-pill.format-2d .pill__format {
+  background: #ffa600;
+}
+
+/* 3D-пилюля */
+.showtime-pill.format-3d {
+  border-color: #e53935;
+}
+.showtime-pill.format-3d .pill__format {
+  background: #e53935;
+}
+
+/* IMAX-пилюля */
+.showtime-pill.format-imax {
+  border-color: #2196f3;
+}
+.showtime-pill.format-imax .pill__format {
+  background: #2196f3;
+}
+
+/* трейлер-модалка */
+.trailer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.trailer-modal__content {
+  position: relative;
+  width: 80vw;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.trailer-modal__iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.trailer-modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  all: unset;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+}

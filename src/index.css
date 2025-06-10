@@ -1,0 +1,217 @@
+/* src/index.css */
+
+/* ============================================================================
+   0) ШРИФТЫ
+   ============================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* ============================================================================
+      1) СБРОС СТИЛЕЙ И БАЗОВЫЕ ПАРАМЕТРЫ
+      ============================================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------------------------------
+      1.1) Переменные (цвета, шрифт, анимации)
+      ---------------------------------------------------------------------------- */
+:root {
+  --color-primary: #ffa500;
+  --color-dark: #0d0d0d;
+  --color-dark-alt: #1a1a1a;
+  --color-bg: var(--color-dark);
+  --color-light: #ffffff;
+  --color-text-mid: #cccccc;
+  --color-button-bg: var(--color-primary);
+  --font-family-base: "Poppins", sans-serif;
+  --transition-speed: 0.2s;
+}
+
+/* ----------------------------------------------------------------------------
+      1.2) Body
+      ---------------------------------------------------------------------------- */
+body {
+  background-color: var(--color-bg) !important;
+  color: var(--color-light);
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ----------------------------------------------------------------------------
+      1.3) Ссылки
+      ---------------------------------------------------------------------------- */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-speed);
+}
+a:hover,
+a:focus {
+  opacity: 0.8;
+  outline: none;
+}
+
+/* ----------------------------------------------------------------------------
+      1.4) Утилиты
+      ---------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.hidden {
+  display: none !important;
+}
+
+/* ----------------------------------------------------------------------------
+      1.5) Формы (input, textarea, select)
+      ---------------------------------------------------------------------------- */
+.input,
+select,
+textarea {
+  background-color: transparent;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: var(--color-light);
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 8px 12px;
+  transition: border-color var(--transition-speed);
+}
+.input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+.input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* ----------------------------------------------------------------------------
+      1.6) Кнопки (.btn, .btn--outline, .btn--primary)
+      ---------------------------------------------------------------------------- */
+.btn {
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.btn--outline {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 8px 20px;
+}
+.btn--outline:hover,
+.btn--outline:focus {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  outline: none;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-dark);
+  padding: 8px 20px;
+}
+.btn--primary:hover,
+.btn--primary:focus {
+  background-color: #e07b00;
+  border-color: #e07b00;
+  outline: none;
+}
+
+/* ============================================================================
+      2) React Slick (Slick Carousel)
+      ============================================================================ */
+/* Точки */
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+.slick-dots li {
+  margin: 0 6px;
+}
+.slick-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #555;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    opacity var(--transition-speed);
+}
+.slick-dots .slick-active .slick-dot {
+  background-color: var(--color-primary);
+  opacity: 1;
+}
+/* Затухание боковых слайдов */
+.slick-slide {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.slick-center {
+  opacity: 1 !important;
+}
+
+/* ============================================================================
+      3) Специальные стили для кнопки “Buy tickets”
+      ============================================================================ */
+.buy-button {
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 8px 24px;
+  color: rgba(255, 166, 0, 0.95);
+  border: 1px solid rgba(255, 166, 0, 0.8);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+.buy-button:hover,
+.buy-button:focus {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: var(--color-light);
+  border-color: rgba(255, 166, 0, 1);
+  outline: none;
+}
+
+.rating-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: 4px; /* чуть отступ от времени */
+}

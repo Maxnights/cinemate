@@ -1,0 +1,127 @@
+/* src/components/index.module.css */
+
+.footer {
+  background-color: var(--color-dark-alt);
+  color: var(--color-light);
+  padding: 40px 16px 20px;
+  border-top: 1px solid #333;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Подписка */
+.footer__subscribe {
+  max-width: 350px;
+}
+
+.footer__logo {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-light);
+  margin-bottom: 8px;
+}
+
+.logo--gradient {
+  background: linear-gradient(90deg, #fccb9a 0%, #db7343 50%, #ff6600 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer__title {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer__subscribeForm {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.footer__input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  transition: border-color var(--transition-speed);
+}
+
+.footer__input::placeholder {
+  color: #aaa;
+}
+
+.footer__input:focus {
+  border-color: var(--color-primary);
+}
+
+/* Соцсети */
+.footer__social {
+  margin-top: 16px;
+}
+
+.footer__socialTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.footer__socialLinks {
+  display: flex;
+  gap: 12px;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-speed);
+  color: var(--color-light);
+}
+
+/* Быстрые ссылки и прочее */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__links h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__list a {
+  color: #ccc;
+  font-size: 14px;
+  transition: color var(--transition-speed);
+}
+
+.footer__list a:hover {
+  color: var(--color-light);
+}
+
+/* Нижняя строка */
+.footer__bottom {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: #888;
+}

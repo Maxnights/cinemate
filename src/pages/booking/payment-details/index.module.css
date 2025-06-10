@@ -1,0 +1,87 @@
+/* src/pages/booking/PaymentDetailsPage.css */
+
+/* Основной контейнер */
+.payment-details {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.payment-details__title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Форма */
+.payment-details__form {
+  max-width: 500px;
+  margin: 0 auto 32px auto;
+}
+
+/* Метки и инпуты */
+.payment-details__label {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.payment-details__input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.payment-details__input:focus {
+  border-color: var(--color-primary);
+}
+
+/* Два поля в один ряд */
+.payment-details__row {
+  display: flex;
+  gap: 16px;
+}
+
+.payment-details__label--half {
+  flex: 1;
+}
+
+/* Чекбокс и текст */
+.payment-details__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.payment-details__checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+/* Кнопка Continue */
+.payment-details__continue {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Адаптив: на узких экранах поля в колонку */
+@media (max-width: 600px) {
+  .payment-details__row {
+    flex-direction: column;
+  }
+}

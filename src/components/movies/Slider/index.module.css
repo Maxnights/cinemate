@@ -1,0 +1,182 @@
+/* src/components/Slider.css */
+
+/*=============================================================================
+  1) Полная ширина карусели
+=============================================================================*/
+.slider-wrapper {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin: 0 -50vw;
+  width: 100vw;
+  background: var(--color-bg);
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+/*=============================================================================
+  2) React-Slick контейнер
+=============================================================================*/
+.slider {
+  max-width: none;
+}
+
+/*=============================================================================
+  3) Отступы каждого слайда
+=============================================================================*/
+.slide {
+  padding: 0 8px;
+}
+
+/*=============================================================================
+  4) Контейнер с изображением + overlay
+=============================================================================*/
+.slide__image-container {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.slide__image {
+  display: block;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.slide__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+/*=============================================================================
+  5) Текстовый блок на слайде
+=============================================================================*/
+.slide__text {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  color: var(--color-light);
+}
+
+.slide__meta {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0 0 8px;
+}
+
+.slide__title {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+/*=============================================================================
+  6) Кнопка Buy tickets
+=============================================================================*/
+.slide__buy-button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  all: unset;
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid rgba(255, 166, 0, 0.8);
+  border-radius: 4px;
+  background-color: rgba(255, 211, 129, 0.08);
+  backdrop-filter: blur(1px);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 166, 0, 0.95);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.slide__buy-button:hover {
+  background-color: rgba(255, 166, 0, 0.16);
+  color: var(--color-light);
+  border-color: rgba(255, 166, 0, 1);
+}
+
+/*=============================================================================
+  7) Кастомные стрелки со свечение и заливкой при ховере
+=============================================================================*/
+.custom-arrow {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  line-height: 1;
+  user-select: none;
+
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.custom-prev {
+  left: 100px;
+}
+.custom-next {
+  right: 100px;
+}
+
+.custom-arrow:hover {
+  /* Полупрозрачный фон-круг */
+  /*background-color: rgba(255, 166, 0, 0.2);
+  /* Мягкое свечение */
+  /*box-shadow: 0 0 3px rgba(255, 166, 0, 0.6), 0 0 6px rgba(255, 166, 0, 0.4);
+  /* Лёгкий зум */
+  transform: translateY(-50%) scale(1.3);
+  /* Яркая стрелка */
+  color: #ffa600;
+}
+
+/*=============================================================================
+  8) Точки-индикаторы
+=============================================================================*/
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  margin-top: 24px;
+}
+.slick-dots li {
+  margin: 0 6px;
+}
+.slick-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+  opacity: 0.6;
+}
+.slick-dots .slick-active .slick-dot {
+  background: var(--color-primary);
+  opacity: 1;
+}
+
+/*=============================================================================
+  9) Затемнение боковых слайдов
+=============================================================================*/
+.slick-slide {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.slick-center {
+  opacity: 1 !important;
+}

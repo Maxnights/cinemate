@@ -1,0 +1,159 @@
+/* =============================================================================
+   Файл: src/components/ShowtimeNav.css
+   Назначение: все стили для навигации по датам (стрелки + кнопки "pill")
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1) Общий контейнер для навигации по датам: стрелки + кнопки
+   -----------------------------------------------------------------------------
+   - flex, центрирование по горизонтали
+   - промежуток между стрелками и списком кнопок
+   - padding, чтобы крайние кнопки не прилипали к краям экрана
+*/
+.showtime-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* -----------------------------------------------------------------------------
+     2) Стили для стрелок «Prev» / «Next»
+     -----------------------------------------------------------------------------
+     - размер 32×32 пикселя
+     - круглая форма (border-radius: 50%)
+     - фон: чёрный с прозрачностью 0.5
+     - svg внутри: белая стрелка (16×16)
+     - при hover: фон становится чуть темнее
+  */
+.showtime-nav__arrow {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.showtime-nav__arrow svg {
+  width: 100px;
+  height: 100px;
+  fill: #ffffff;
+}
+
+.showtime-nav__arrow:hover,
+.showtime-nav__arrow:focus {
+  background-color: rgba(255, 166, 0, 0.8);
+  outline: none;
+}
+
+/* Можно задать дополнительные модификаторы, если хочешь добавить сбоку по 8px:
+  .showtime-nav__arrow--prev {
+    margin-right: 8px;
+  }
+  .showtime-nav__arrow--next {
+    margin-left: 8px;
+  }
+  */
+
+/* -----------------------------------------------------------------------------
+     3) Контейнер для самих кнопок-дата (список)
+     -----------------------------------------------------------------------------
+     - flex-строка
+     - промежуток 12px между каждой «pill»-кнопкой
+     - overflow-x: auto (если нужно прокрутка, но мы скроллим с помощью JS)
+  */
+.showtime-nav__date-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Если хотите, чтобы список сам прокручивался мышью/тачем, раскомментируйте: */
+  /* overflow-x: auto; */
+  /* scrollbar-width: none; */ /* Firefox */
+  /* -ms-overflow-style: none; */ /* IE 10+ */
+}
+.showtime-nav__date-list::-webkit-scrollbar {
+  display: none; /* Safari и Chrome */
+}
+
+/* -----------------------------------------------------------------------------
+     4) Базовый стиль для кнопок-дата (неактивные «pill»-кнопки)
+     -----------------------------------------------------------------------------
+     - фон: прозрачный (тёмный фон страницы просвечивает)
+     - рамка: 1px solid var(--color-primary) (оранжевый)
+     - текст: цвет var(--color-light) (белый)
+     - шрифт: 14px / 500, uppercase
+     - padding: 8px 16px (чтобы высота ~32px)
+     - border-radius: 4px
+     - плавный transition для background, color, border-color
+  */
+.showtime-nav__date-button {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-light);
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), border-color var(--transition-speed);
+}
+
+/* -----------------------------------------------------------------------------
+     5) Hover / Focus для неактивных кнопок
+     -----------------------------------------------------------------------------
+     - фон: rgba(255,166,0,0.1) (очень светло-оранжевый)
+     - рамка: rgba(255,166,0,1) (сплошной оранжевый)
+     - outline: none
+  */
+.showtime-nav__date-button:hover,
+.showtime-nav__date-button:focus {
+  background-color: rgba(255, 166, 0, 0.1);
+  border-color: rgba(255, 166, 0, 1);
+  outline: none;
+}
+
+/* -----------------------------------------------------------------------------
+     6) Стиль «активной» кнопки (класс --active)
+     -----------------------------------------------------------------------------
+     - фон: var(--color-primary) (#FFA600)
+     - рамка: тот же цвет (#FFA600)
+     - текст: var(--color-dark) (#0D0D0D)
+  */
+.showtime-nav__date-button--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-dark);
+}
+
+/* -----------------------------------------------------------------------------
+     7) Hover / Focus для активной кнопки
+     -----------------------------------------------------------------------------
+     - фон: чуть более тёмный оранжевый (#E08A00)
+     - рамка: тот же тёмный (#E08A00)
+     - outline: none
+  */
+.showtime-nav__date-button--active:hover,
+.showtime-nav__date-button--active:focus {
+  background-color: #e08a00;
+  border-color: #e08a00;
+  outline: none;
+}
+
+/* Сделаем круглее с повышенной специфичностью */
+.showtime-nav .showtime-nav__date-list > .showtime-nav__date-button {
+  border-radius: 10px !important;
+}

@@ -1,0 +1,67 @@
+.filter-panel {
+  width: 100%;
+  margin: 32px 0; /* чуть больше пространства */
+  padding: 0 24px; /* боковые отступы 24px, как в макете */
+}
+
+.filter-panel__group {
+  margin-bottom: 24px;
+}
+
+.filter-panel__label {
+  font-size: 14px;
+  color: var(--color-light);
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+.filter-panel__options {
+  display: flex;
+  gap: 12px;
+  white-space: nowrap; /* запрет на перенос, чтоб скроллились */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 8px;
+}
+
+.filter-panel__button {
+  flex: 0 0 auto;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  line-height: 32px;
+  background-color: var(--color-dark-alt);
+  color: #ccc;
+  border: 1px solid #555;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.filter-panel__button:hover {
+  background-color: #333;
+}
+
+.filter-panel__button.active {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 500px) {
+  .filter-panel__label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .filter-panel__options {
+    margin-top: 0;
+    gap: 8px;
+  }
+  .filter-panel__button {
+    height: 28px;
+    font-size: 12px;
+    line-height: 28px;
+    padding: 0 10px;
+  }
+}

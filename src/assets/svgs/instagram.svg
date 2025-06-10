@@ -1,0 +1,13 @@
+<svg id='Instagram_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'>
+  <rect width='24' height='24' stroke='none' fill='#ccc' opacity='0' />
+
+
+  <g transform="matrix(0.83 0 0 0.83 12 12)">
+    <path
+      style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(230, 230, 230); fill-rule: nonzero; opacity: 1;"
+      transform=" translate(-15, -15)"
+      d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 C 12.790861000676827 11 11 12.790861000676827 11 15 C 11 17.209138999323173 12.790861000676827 19 15 19 C 17.209138999323173 19 19 17.209138999323173 19 15 C 19 12.790861000676827 17.209138999323173 11 15 11 z"
+      stroke-linecap="round" />
+  </g>
+</svg>

@@ -1,0 +1,131 @@
+/* src/pages/booking/SeatSelection.css */
+
+/* Основной контейнер */
+.seat-selection {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.seat-selection__title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Подзаголовок (например, «Showtime: Mon 26 Dec, 20:00, 3D») */
+.seat-selection__subtitle {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Индикатор «Экран» */
+.seat-selection__screen {
+  width: 80%;
+  margin: 0 auto 24px auto;
+  padding: 8px 0;
+  background-color: #333;
+  border-radius: 4px;
+  color: var(--color-light);
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Контейнер для схемы зала */
+.seat-selection__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* расстояние между рядами */
+  margin-bottom: 24px;
+}
+
+/* Один ряд */
+.seat-selection__row {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* расстояние между местами */
+}
+
+/* Метка ряда (буква) */
+.seat-selection__row-label {
+  width: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+/* Кресло */
+.seat {
+  width: 32px;
+  height: 32px;
+  background-color: #444; /* базовый фон для свободного */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--color-light);
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.seat.available:hover {
+  background-color: #555;
+  transform: scale(1.1);
+}
+
+.seat.taken {
+  background-color: #222;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+}
+
+/* Информация о выбранных местах */
+.seat-selection__selected-info {
+  font-size: 14px;
+  color: var(--color-light);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Кнопка Continue */
+.seat-selection__continue {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Адаптив: на узких экранах уменьшаем размер кресел и шрифт */
+@media (max-width: 600px) {
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+  .seat-selection__row-label {
+    font-size: 12px;
+  }
+  .seat-selection__screen {
+    width: 100%;
+    font-size: 14px;
+  }
+  .seat-selection__title {
+    font-size: 20px;
+  }
+  .seat-selection__subtitle {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+}

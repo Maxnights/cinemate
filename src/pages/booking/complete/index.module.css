@@ -1,0 +1,155 @@
+/* src/pages/booking/OrderCompletionPage.css */
+
+/* Основной контейнер */
+.order-completion {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.order-completion__title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Подзаголовок */
+.order-completion__subtitle {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* Блок с QR-кодом */
+.order-completion__ticket {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.order-completion__ticket-title {
+  font-size: 18px;
+  color: var(--color-light);
+  margin-bottom: 16px;
+}
+
+.order-completion__qr {
+  margin-bottom: 16px;
+}
+
+.order-completion__qr-text {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--color-light);
+}
+
+.order-completion__screen,
+.order-completion__seats {
+  font-size: 14px;
+  color: #ccc;
+  margin: 4px 0;
+}
+
+.order-completion__swap {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+.order-completion__swap:hover {
+  color: #ffdd55;
+}
+
+/* Блок “Pickup order overview” */
+.order-completion__pickup-overview {
+  margin-bottom: 32px;
+}
+
+.order-completion__section-title {
+  font-size: 18px;
+  color: var(--color-light);
+  margin-bottom: 12px;
+}
+
+.order-completion__pickup-list {
+  list-style: disc;
+  padding-left: 20px;
+  color: #ccc;
+  margin-bottom: 8px;
+}
+
+.order-completion__pickup-empty {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.order-completion__pickup-edit {
+  font-size: 14px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+.order-completion__pickup-edit:hover {
+  color: #ffdd55;
+}
+
+/* Блок таймера */
+.order-completion__timer {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.order-completion__countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.order-completion__countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-completion__countdown-value {
+  font-size: 32px;
+  color: var(--color-light);
+}
+
+.order-completion__countdown-label {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.order-completion__colon {
+  font-size: 32px;
+  color: var(--color-light);
+}
+
+/* Кнопка “Add to calendar” */
+.order-completion__add-calendar {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Адаптив: на узких экранах таймер в одну строку или сжатый вид */
+@media (max-width: 600px) {
+  .order-completion__countdown {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .order-completion__countdown-item {
+    margin-bottom: 8px;
+  }
+}

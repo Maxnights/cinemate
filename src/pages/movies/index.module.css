@@ -1,0 +1,386 @@
+/* src/pages/MoviesPage.css */
+
+/* Корневой контейнер страницы */
+.movies-page {
+  background-color: var(--color-dark);
+  padding-top: 40px; /* чтобы не прилипало к шапке */
+  padding-bottom: 60px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Центрируем контент в пределах max-width */
+.movies-page__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Заголовок страницы «All Movies» */
+.movies-page__title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-light);
+  margin-bottom: 24px;
+  font-family: var(--font-family-base);
+}
+
+/* Контейнер для строки поиска */
+.movies-page__search {
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+
+/* Стили для input поиска (используем общий класс .input из index.css) */
+.movies-page__search-input {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #444;
+  border-radius: 10px;
+  color: var(--color-light);
+  padding: 10px 14px;
+  font-size: 14px;
+  transition: border-color var(--transition-speed);
+}
+
+.movies-page__search-input::placeholder {
+  color: #888;
+}
+
+.movies-page__search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Сетка карточек фильмов */
+.movies-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+/* Если нет результатов поиска */
+.movies-page__no-results {
+  font-size: 16px;
+  color: #ccc;
+  margin-top: 16px;
+}
+
+/* Обёртка для заголовка + поиска */
+.movies-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* регулируйте отступ под себе */
+}
+
+/* Если поле поиска слишком узкое/широкое — подправьте */
+.movies-page__search-input {
+  width: 240px; /* или 100% с max-width */
+  max-width: 70%;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+}
+
+/* Адаптив для маленького экрана */
+@media (max-width: 600px) {
+  .movies-page__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .movies-page__search-input {
+    width: 100%;
+    margin-top: 1rem;
+    max-width: none;
+  }
+}
+
+/* контейнер для поля + иконки */
+.search-wrapper {
+  position: relative;
+  display: inline-block; /* чтобы размер по контенту */
+}
+
+/* сама иконка */
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* клики “сквозь” */
+  font-size: 1rem; /* подгоните под ваш дизайн */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* сдвигаем текст в поле, чтобы не наслаивался на иконку */
+.search-wrapper .movies-page__search-input {
+  padding-left: 2.5rem; /* подберите под ширину иконки + отступ */
+}
+
+/* если вы переопределяли стили для .movies-page__search-input, 
+   убедитесь, что padding-left не затирается более специфичным селектором */
+
+/* src/pages/MoviesPage.css */
+
+/* src/pages/MoviesPage.css */
+
+.movies-page__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* раздвигаем первую и последнюю группу в стороны */
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Заголовок слева, всё остальное — справа */
+.movies-page__controls > h1 {
+  margin: 0;
+  flex-shrink: 0; /* не даём заголовку ужиматься */
+}
+
+/* Группа поиска и фильтров, чтобы она была справа */
+.controls__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Поиск */
+.search-wrapper {
+  position: relative; /* чтобы сдвиг работал */
+  width: 300px;
+  /* вот здесь укажи свой отступ в пикселях */
+  left: 95px; /* сдвигаем вправо на 200px */
+}
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+.movies-page__search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+}
+
+/* Кнопка фильтров */
+.filters-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px !important;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.filters-icon {
+  font-size: 0.8rem;
+}
+
+/* Сбросим gap между табами */
+.movies-page__status-tabs-row {
+  display: inline-flex;
+  margin: 1rem 0;
+  /* убираем gap */
+  gap: 0;
+}
+
+/* Общие стили для табов */
+.status-tab {
+  padding: 0.5rem 1.5rem;
+  background: transparent;
+  border: 2px solid #ff8c00;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  /* чтобы соседние кнопки «сливались» */
+  border-radius: 0;
+  /* Общая граница между ними станет правой границей левой кнопки */
+  margin-right: -2px;
+  width: 586px; /* фиксированная ширина таба */
+  text-align: center; /* центрируем надпись внутри */
+}
+
+/* Левый активный таб */
+.status-tab--active {
+  background: linear-gradient(90deg, #ff8c00, #ffbe00);
+  color: #000;
+  border-color: #ff8c00;
+  font-size: 1.1rem;
+}
+
+/* Правый таб (неактивный) */
+.movies-page__status-tabs-row .status-tab:last-child {
+  /* Отменяем отрицательный margin на последнем */
+  margin-right: 0;
+  font-size: 1.1rem;
+}
+
+/* Скругления — у первой кнопки слева и у последней справа */
+.movies-page__status-tabs-row .status-tab:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.movies-page__status-tabs-row .status-tab:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/* Сетка фильмов */
+.movies-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* 3) Фильтры ниже табов */
+.movies-page__filters-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* отступ между группами */
+  margin-bottom: 1.5rem;
+  margin-top: 1rem; /* увеличь/уменьши по вкусу */
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* расстояние между лейблом и кнопками */
+  margin-bottom: 0.1rem; /* если нужно разделять группы сверху/снизу */
+}
+/* Сам текст метки */
+.filter-label {
+  position: relative;
+  padding-left: 12px; /* отступ, чтобы текст не налезал на линию */
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Цветная полоса слева */
+.filter-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 2.4em; /* чуть выше текста */
+  background: #ff8c00; /* ваш оранжевый */
+  border-radius: 2px;
+}
+.filter-btn {
+  padding: 0.2rem 0.8rem;
+  background: transparent;
+  border: 2px solid rgb(255, 153, 0);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+.filter-btn.active,
+.filter-btn:hover {
+  background: #ff8c00;
+  border-color: #ff8c00;
+  color: #000;
+}
+
+.filters-icon {
+  font-size: 0.8rem;
+}
+
+/* Обёртка для группы фильтров */
+.filter-buttons {
+  display: flex !important; /* ровный ряд */
+  flex-wrap: nowrap !important; /* никакого переноса */
+  overflow-x: auto !important; /* горизонтальная прокрутка */
+  -webkit-overflow-scrolling: touch; /* плавность на iOS */
+  gap: 0.5rem; /* отступы между кнопками */
+  padding-bottom: 0.5rem; /* место под скроллбар */
+  scrollbar-width: thin; /* тонкий скроллбар для Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Скрываем стандартный webkit-скроллбар (опционально) */
+.filter-buttons::-webkit-scrollbar {
+  height: 6px;
+}
+.filter-buttons::-webkit-scrollbar-track {
+  background: transparent;
+}
+.filter-buttons::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* Кнопки внутри никогда не растягиваются и не переносятся */
+.filter-buttons .filter-btn {
+  flex: 0 0 auto !important;
+  white-space: nowrap; /* текст внутри не переносится */
+}
+
+/* когда можно «хватать» */
+.filter-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  cursor: grab;
+}
+.filter-buttons.dragging {
+  cursor: grabbing;
+}
+.filter-buttons .filter-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Для группы Experience (первый .filter-group) */
+.movies-page__filters-row .filter-group:nth-of-type(1) .filter-buttons {
+  margin-left: 0.3rem; /* подстрой под свой шрифт/размер лейбла */
+}
+
+/* Для группы Genre (второй .filter-group) */
+.movies-page__filters-row .filter-group:nth-of-type(2) .filter-buttons {
+  margin-left: 2.7rem; /* здесь может понадобиться чуть другое значение */
+}
+
+/* src/pages/MoviesPage.css */
+
+/* контейнер, внутри которого будет фон */
+/* В корне MoviesPage.css */
+
+/* Размытый фон во всю ширину под фильтрами */
+.movies-page__blur-container {
+  position: absolute;
+  top: 1120px;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  height: 625px; /* подкорректируй по макету */
+  pointer-events: none;
+  z-index: 0;
+
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    url("../../assets/images/backgrounds/showa-bg.jpg") center bottom / cover no-repeat;
+  filter: blur(60px) brightness(1);
+  opacity: 0.6;
+}

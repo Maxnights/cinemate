@@ -1,0 +1,122 @@
+/* src/pages/booking/OrderDetailsPage.css */
+
+/* Основной контейнер */
+.order-details {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.order-details__title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Контейнер для формы и обзора */
+.order-details__container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+/* Левая колонка: форма */
+.order-details__form {
+  flex: 1;
+  min-width: 280px;
+}
+
+.order-details__section-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--color-light);
+}
+
+/* Метки и инпуты */
+.order-details__label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.order-details__input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.order-details__input:focus {
+  border-color: var(--color-primary);
+}
+
+/* Правая колонка: обзор заказа */
+.order-details__review {
+  flex: 1;
+  min-width: 280px;
+}
+
+.order-details__review-block {
+  margin-bottom: 16px;
+}
+
+.order-details__review-label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-light);
+  margin-bottom: 4px;
+}
+
+.order-details__review-list {
+  margin: 0;
+  padding-left: 16px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.order-details__review-list li {
+  margin-bottom: 4px;
+}
+
+.order-details__review-value {
+  font-size: 16px;
+  color: var(--color-light);
+}
+
+.order-details__review-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.order-details__review-value {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Кнопка Continue */
+.order-details__continue {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Адаптив: на экранах до 768px колонки переходят в одну */
+@media (max-width: 768px) {
+  .order-details__container {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

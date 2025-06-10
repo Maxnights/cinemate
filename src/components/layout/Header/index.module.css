@@ -1,0 +1,136 @@
+/* src/components/Header/Header.module.css */
+
+/*=============================================================================
+  1) Основной контейнер шапки
+=============================================================================*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/*=============================================================================
+  2) Левый блок: логотип + навигация
+=============================================================================*/
+.left {
+  display: flex;
+  align-items: center; /* теперь логотип и навигация по одной горизонтали */
+  gap: 32px;
+}
+
+/*=============================================================================
+  3) Логотип
+=============================================================================*/
+.logo {
+  font-family: var(--font-family-base);
+  font-size: 2rem; /* при необходимости подкорректируйте */
+  font-weight: 600;
+  color: #b3b3b3; /* "Cine" */
+  text-decoration: none;
+  transition: color 0.2s ease, filter 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* 2) При ховере по всему лого — и по белой, и по градиентной части */
+.logo:hover {
+  /* чуть усиливаем яркость */
+  filter: brightness(1.1);
+}
+
+.logo--gradient {
+  background: linear-gradient(90deg, #fccb9a 0%, #db7343 50%, #ff6600 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* "mate" */
+  transition: text-shadow 0.2s ease;
+}
+
+.logo--gradient:hover,
+.logo:hover .logo--gradient {
+  /* лёгкое свечение того же цвета, что и градиент */
+  text-shadow: 0 0 8px rgba(247, 143, 30, 0.878),
+    0 0 16px rgba(234, 135, 6, 0.4);
+}
+
+/*=============================================================================
+  4) Навигационные ссылки
+=============================================================================*/
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.nav a {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-light);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.nav a:hover,
+.nav a:focus {
+  color: var(--color-primary);
+}
+
+/*=============================================================================
+  5) Блок действий справа
+=============================================================================*/
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-light);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--color-primary);
+}
+
+.quickBooking {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  color: var(--color-primary);
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.quickBooking:hover,
+.quickBooking:focus {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  outline: none;
+}
+
+.navLink {
+  color: var(--color-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--color-primary);
+}
+
+/* Активная ссылка всегда приоритетнее */
+.activeLink {
+  color: var(--color-primary) !important;
+}

@@ -1,0 +1,480 @@
+/* src/components/TrailerCarousel.css */
+
+/* 1) Внешний контейнер — ничего не обрезаем */
+.trailer-carousel {
+  margin-bottom: 2rem;
+  overflow: visible !important;
+  background: transparent !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* 2) Центрируем и скругляем рамку */
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  height: 655px; /* 1200px × 56.25% = 675px, 
+                                 но здесь вы подберёте под свой макет */
+  overflow: hidden; /* всё, что выходит за высоту, обрезается */
+  padding: 0; /* убираем padding-bottom */
+  background: transparent !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* 3) Клиппим только содержимое слайдов */
+.carousel-container .slick-list {
+  overflow: hidden !important;
+  border-radius: 16px;
+}
+.carousel-container .slick-slide > div {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* 4) Обёртка плеера 16:9 */
+.player-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* соотношение сторон 16:9 */
+  overflow: hidden;
+}
+/* Принудительно растягиваем внутренние обёртки ReactPlayer */
+.player-wrapper > div,
+.player-wrapper > div > div {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+/* И сам iframe */
+.player-wrapper > div > div > iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  height: 100% !important; /* тянем по высоте контейнера */
+  width: auto !important; /* ширина подстраивается по пропорции */
+  min-width: 100% !important; /* чтобы всегда минимум заполнять контейнер */
+  transform: translateX(-50%) !important; /* центрируем по горизонтали */
+  border-radius: 16px 16px 0 0 !important;
+  background: transparent !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+/* Превью-картинка, если используется light */
+.player-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+/* 5) Градиент для читаемости текста */
+/*.carousel-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.6) 30%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+    
+    /* 6) Оверлей с инфой */
+.info-overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: #fff;
+  z-index: 2;
+}
+.info-overlay h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+.info-overlay p {
+  margin: 0.5rem 0;
+}
+.btn.buy {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background: #ff8c00;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* 7) Стрелки */
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-size: 40px;
+  color: #fff;
+}
+.slick-prev {
+  left: 20px;
+}
+.slick-next {
+  right: 20px;
+}
+
+/* 8) Точки под рамкой */
+.carousel-container .slick-dots {
+  position: absolute !important;
+  bottom: 50px !important; /* 30px ниже рамки */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 3;
+}
+.carousel-container .slick-dots li button:before {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.carousel-container .slick-dots li.slick-active button:before {
+  color: #ff6200;
+}
+
+/* 9) Разрешаем самому слайдеру показывать overflow */
+.carousel-container .slick-slider {
+  overflow: visible !important;
+}
+
+/* Сбросить стандартный padding у слайдов */
+.carousel-container .slick-slide {
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Убрать возможные отступы у обёрток трека и списка */
+.carousel-container .slick-track,
+.carousel-container .slick-list {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* src/components/TrailerCarousel.css */
+
+/* Сбросим padding и margin у родных слайдов */
+.carousel-container .slide,
+.carousel-container .slick-slide {
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  background: transparent !important;
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Ещё раз уберём отступы у трека и списка */
+.carousel-container .slick-list,
+.carousel-container .slick-track {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.react-player__preview::before {
+  background: transparent !important;
+}
+.player-wrapper img {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* кастомная круглая плей-кнопка */
+.custom-play-button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ff8c00;
+  color: #fff;
+  font-size: 2.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2; /* чтобы была над превью */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding-left: 12px;
+  padding-right: 4px;
+}
+
+/* центрируем кнопку поверх превью */
+.player-wrapper .react-player__preview .custom-play-button,
+.player-wrapper .custom-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* стили для вашего <img>-превью */
+.manual-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+}
+
+/* Логотип поверх плеера/превью */
+.player-wrapper {
+  position: relative; /* нужно для абсолютного позиционирования логотипа */
+}
+
+/* подвинуть и уменьшить логотип */
+/* Уменьшаем и фиксируем логотип в углу */
+.logo-overlay {
+  position: absolute;
+  top: 8px; /* небольшой отступ сверху */
+  left: 8px; /* небольшой отступ слева */
+  width: 60px; /* фиксированная ширина */
+  height: auto; /* пропорциональная высота */
+  z-index: 5; /* поверх всего */
+  pointer-events: none;
+  object-fit: contain;
+}
+
+/* чтобы кнопка точно ловила клики */
+.custom-play-button {
+  pointer-events: auto;
+  z-index: 10; /* наверх всех слоёв */
+}
+
+/* ==== Жёстко фиксируем размер и позицию логотипа ==== */
+.slide .player-wrapper .logo-overlay {
+  position: absolute !important;
+  top: 250px !important;
+  left: 8px !important;
+  width: 350px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  z-index: 999 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Блок под логотипом */
+.logo-info {
+  position: absolute;
+  top: 300px; /* под логотипом */
+  left: 80px !important; /* общий отступ от левого края карусели */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* выравниваем всё по левому краю */
+  gap: 4px;
+  max-width: 300px;
+  color: #fff;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Разделитель “•” */
+.logo-info__sep {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Жанры / длительность / рейтинг */
+.logo-info__genres,
+.logo-info__duration,
+.logo-info__rating {
+  display: inline-block;
+}
+
+/* Оформление рейтинга как в сетке фильмов */
+.logo-info__rating {
+  display: inline-block;
+  padding: 2px 6px; /* внутренние отступы */
+  border: 1px solid rgba(255, 255, 255, 0.8); /* обводка */
+  border-radius: 4px; /* скруглённые уголки */
+  font-size: 0.75rem; /* чуть помельче текста */
+  color: #fff; /* цвет текста */
+  background: rgba(0, 0, 0, 0.3); /* полупрозрачный фон */
+}
+
+/* Описание под инфой */
+.logo-info__description {
+  margin: 8px 0 0; /* только отступ сверху */
+  max-width: 400px;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/*xyu*/
+
+/* Жёстко позиционируем блок .logo-info внутри .player-wrapper */
+.slide .player-wrapper .logo-info {
+  position: absolute !important;
+  top: 310px !important; /* подгони эту цифру вверх/вниз */
+  left: 75px !important; /* подгони эту цифру влево/вправо */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  max-width: 300px !important;
+  pointer-events: none !important;
+  z-index: 999 !important;
+}
+
+/* Восстанавливаем цвет точек */
+.carousel-container .slick-dots li button:before {
+  /* неактивные точки — полупрозрачны белые */
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* активная точка — оранжевая */
+.carousel-container .slick-dots li.slick-active button:before {
+  color: #ff7300 !important;
+}
+
+/* затемняем превью-изображение */
+.player-wrapper .react-player__preview {
+  position: relative; /* чтобы псевдоэлемент лег поверх картинки */
+}
+
+.player-wrapper .react-player__preview::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 30% чёрного */
+  pointer-events: none;
+}
+
+/* если вы используете собственный img.manual-preview */
+.player-wrapper .manual-preview {
+  filter: brightness(0.7) !important; /* чуть темнее */
+}
+
+/* 1) Контейнер слайдера обрезает всё, что выходит за пределы слайда */
+.carousel-container .slick-list,
+.carousel-container .slick-track,
+.carousel-container .slick-slide {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* 2) Плеер внутри слайда может «выдавать» свои оверлеи за пределы */
+.slide .player-wrapper {
+  overflow: visible !important;
+}
+
+/* 3) Кнопка «Buy tickets» внутри info-overlay поверх всего остального */
+.slide .info-overlay {
+  position: absolute !important;
+  bottom: 1.5rem !important;
+  left: 2rem !important;
+  z-index: 999 !important;
+  pointer-events: auto !important;
+}
+
+/* 4) Убедимся, что сама кнопка выше */
+.slide .info-overlay .btn.buy {
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* Скрываем info-overlay у всех слайдов по умолчанию */
+.slide .info-overlay {
+  display: none !important;
+}
+
+/* Показываем его только для активного слайда */
+.slick-slide.slick-active .info-overlay {
+  display: block !important;
+}
+
+/* 1) Отключаем кликабельность оверлея превью */
+.player-wrapper .react-player__preview {
+  pointer-events: none !important;
+}
+
+/* 2) Включаем кликабельность нашему боту */
+.btn.buy {
+  position: absolute; /* или relative, как тебе нужно */
+  bottom: -40px;
+  left: 1px;
+  z-index: 1000; /* выше любого ReactPlayer-а */
+  pointer-events: auto; /* теперь кнопка реально получает клики */
+}
+
+/* 3) Дополнительно, если у тебя плеер в light-режиме: */
+.react-player__preview .custom-play-button {
+  pointer-events: auto !important;
+  z-index: 1001 !important;
+}
+
+/* pizda */
+
+/* Скрываем стандартные стрелки Slick */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* Ваши кастомные стрелки */
+.custom-arrow {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  font-size: 55px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  line-height: 1;
+  user-select: none;
+
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Позиционирование */
+.custom-prev {
+  left: 20px; /* либо 100px, как в первом примере */
+}
+.custom-next {
+  right: 20px; /* либо 100px */
+}
+
+/* Hover-эффекты (по примеру первого файла) */
+.custom-arrow:hover {
+  color: #ffa600;
+  /*background-color: rgba(255, 255, 255, 0.1); */
+  /*box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);*/
+  transform: translateY(-50%) scale(1.3);
+}

@@ -1,0 +1,15 @@
+/* src/pages/BookingPage.css */
+
+.booking-page {
+  padding-top: 100px; 
+  padding-bottom: 40px; 
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.booking-page__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}

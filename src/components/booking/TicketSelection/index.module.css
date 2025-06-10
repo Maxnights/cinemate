@@ -1,0 +1,119 @@
+/* src/pages/booking/TicketSelection.css */
+
+/* Основной контейнер */
+.ticket-selection {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.ticket-selection__title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Блоки списков (билеты и аксессуары) */
+.ticket-selection__lists {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+/* Один список (категория) */
+.ticket-selection__list {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* Заголовок списка */
+.ticket-selection__list-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--color-light);
+}
+
+/* Элемент списка (одна категория билета или аксессуар) */
+.ticket-selection__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Лейбл категории */
+.ticket-selection__item-label {
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+/* Счётчик (+ —) */
+.ticket-selection__counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Кнопки — и + */
+.ticket-selection__counter-btn {
+  width: 28px;
+  height: 28px;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  color: var(--color-light);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color var(--transition-speed);
+}
+.ticket-selection__counter-btn:hover {
+  background-color: #444;
+}
+
+/* Число в счётчике */
+.ticket-selection__counter-value {
+  width: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+/* Итоговая сумма */
+.ticket-selection__summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.ticket-selection__summary-label {
+  font-size: 16px;
+  margin-right: 8px;
+  color: var(--color-light);
+}
+.ticket-selection__summary-value {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Кнопка Continue */
+.ticket-selection__continue {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Адаптив: при очень узких экранах списки переходят в колонку */
+@media (max-width: 768px) {
+  .ticket-selection__lists {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

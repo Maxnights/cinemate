@@ -1,0 +1,75 @@
+.movie-card {
+  position: relative;
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+  cursor: pointer;
+  height: 280px; /* фиксированная высота, чтобы все постеры были одного размера */
+}
+
+.movie-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.movie-card__poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+}
+
+.movie-card__info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  color: var(--color-light);
+}
+
+.movie-card__title {
+  font-size: 18px;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.movie-card__genres {
+  font-size: 12px;
+  color: #ccc;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .movie-card {
+    height: 220px;
+  }
+  .movie-card__title {
+    font-size: 16px;
+  }
+  .movie-card__genres {
+    font-size: 10px;
+  }
+}
+/* src/components/MovieCard.css */
+
+/* ... уже существующий код ... */
+
+/* 9) Стили для .movie-card-link (чтобы убрать стандартное подчёркивание и цвет ссылки) */
+.movie-card-link {
+  text-decoration: none;
+  display: block;
+}

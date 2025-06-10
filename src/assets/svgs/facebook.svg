@@ -1,0 +1,13 @@
+<svg id='Facebook_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'>
+  <rect width='24' height='24' stroke='none' fill='#ccc' opacity='0' />
+
+
+  <g transform="matrix(0.83 0 0 0.83 12 12)">
+    <path
+      style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(230, 230, 230); fill-rule: nonzero; opacity: 1;"
+      transform=" translate(-15, -14.94)"
+      d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.016 7.432 25.984 13.206 26.852 L 13.206 18.18 L 10.237 18.18 L 10.237 15.026 L 13.206 15.026 L 13.206 12.927 C 13.206 9.452 14.899 7.927 17.787 7.927 C 19.169999999999998 7.927 19.902 8.03 20.247999999999998 8.075999999999999 L 20.247999999999998 10.828999999999999 L 18.278 10.828999999999999 C 17.052 10.828999999999999 16.624 11.991999999999999 16.624 13.302 L 16.624 15.026 L 20.217 15.026 L 19.73 18.18 L 16.624000000000002 18.18 L 16.624000000000002 26.877 C 22.481 26.083 27 21.075 27 15 C 27 8.373 21.627 3 15 3 z"
+      stroke-linecap="round" />
+  </g>
+</svg>

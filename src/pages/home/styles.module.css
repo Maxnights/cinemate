@@ -1,0 +1,186 @@
+/* src/pages/HomePage.css */
+
+/*=============================================================================
+  Общие переменные (если не в index.css — дублируйте здесь)
+=============================================================================*/
+:root {
+  --color-primary: #ffa600;
+  --color-light: #ffffff;
+  --color-bg: #0d0d0d;
+  --font-family-base: "Inter", sans-serif;
+  --transition-speed: 0.2s;
+}
+
+/*=============================================================================
+  1) Основной контейнер страницы
+=============================================================================*/
+.page.home-page {
+  padding-top: 0; /* под шапку */
+  padding-bottom: 40px;
+  background-color: var(--color-bg);
+  color: var(--color-light);
+  font-family: var(--font-family-base);
+}
+
+/*=============================================================================
+  2) Слайдер «Popular now»
+=============================================================================*/
+.slider-container {
+  margin-top: 40px;
+}
+
+/*=============================================================================
+  3) Заголовок Showtimes
+=============================================================================*/
+.showtimes-section__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--color-light);
+}
+
+/*=============================================================================
+  4) Flex-контейнер: Search + Filter
+=============================================================================*/
+.showtimes-section__controls {
+  display: flex;
+  justify-content: space-between; /* поиск слева, фильтр справа */
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/*=============================================================================
+  4.1) Поле поиска
+=============================================================================*/
+.showtimes-section__search {
+  width: 270px; /* жёстко 270px */
+  margin-right: 0; /* убрали дополнительный отступ */
+}
+.search-input {
+  position: relative;
+}
+.search-input__icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: #888;
+  pointer-events: none;
+}
+.search-input__field {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--color-light);
+  font-size: 14px;
+  transition: border-color var(--transition-speed);
+  box-sizing: border-box;
+}
+.search-input__field::placeholder {
+  color: #888;
+}
+.search-input__field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/*=============================================================================
+  4.2) Кнопка «Filter movies»
+=============================================================================*/
+.showtimes-section__filter {
+  all: unset; /* сброс стилей браузера */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+
+  color: var(--color-light);
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    color var(--transition-speed), border-color var(--transition-speed);
+}
+.showtimes-section__filter .filter-icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-light);
+}
+.showtimes-section__filter:hover,
+.showtimes-section__filter:focus {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/*=============================================================================
+  5) Навигация по датам
+=============================================================================*/
+.showtime-nav {
+  margin-top: 2rem;
+}
+.showtime-nav__date-list {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.showtime-nav__date-list::-webkit-scrollbar {
+  display: none;
+}
+.showtime-nav__date-button {
+  background: transparent;
+  color: var(--color-light);
+  border: 1px solid var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+.showtime-nav__date-button--active {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+.showtime-nav__date-button:hover:not(.showtime-nav__date-button--active),
+.showtime-nav__date-button:focus:not(.showtime-nav__date-button--active) {
+  background-color: rgba(255, 165, 0, 0.1);
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/*=============================================================================
+  6) Адаптив
+=============================================================================*/
+@media (max-width: 600px) {
+  .page.home-page {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+  .showtimes-section__controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .showtimes-section__search {
+    width: 100%;
+  }
+  .search-input__field {
+    padding: 8px 10px 8px 32px;
+  }
+}

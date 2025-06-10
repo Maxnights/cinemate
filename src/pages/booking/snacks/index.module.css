@@ -1,0 +1,305 @@
+/* src/pages/booking/SnacksPage.css */
+
+/* Основной контейнер */
+.snacks-page {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Заголовок */
+.snacks-page__title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+/* Категория закусок */
+.snacks-page__category {
+  margin-bottom: 32px;
+}
+
+/* Название категории */
+.snacks-page__category-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--color-light);
+}
+
+/* Список карточек товаров */
+.snacks-page__items {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Одна карточка товара */
+.snacks-page__item {
+  background-color: #222;
+  border-radius: 8px;
+  width: 160px;
+  cursor: pointer;
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+  overflow: hidden;
+}
+
+.snacks-page__item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Изображение в карточке */
+.snacks-page__item-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Блок с названием и ценой под изображением */
+.snacks-page__item-info {
+  padding: 8px;
+  text-align: center;
+}
+
+.snacks-page__item-name {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  color: var(--color-light);
+}
+
+.snacks-page__item-price {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Модалка (фон) */
+.snacks-page__modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Модалка (контейнер) */
+.snacks-page__modal {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  padding: 24px;
+  color: var(--color-light);
+  position: relative;
+}
+
+/* Изображение в модалке */
+.snacks-page__modal-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Название товара */
+.snacks-page__modal-name {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+/* Описание (пока lorem) */
+.snacks-page__modal-desc {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+/* Кнопки выбора размера */
+.snacks-page__modal-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.snacks-page__modal-size-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #333;
+  color: var(--color-light);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+
+.snacks-page__modal-size-btn:hover {
+  background-color: #444;
+}
+
+.snacks-page__modal-size-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-dark);
+}
+
+/* Footer модалки: счётчик и кнопка Add to cart */
+.snacks-page__modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.snacks-page__modal-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.snacks-page__modal-counter-btn {
+  width: 32px;
+  height: 32px;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  color: var(--color-light);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color var(--transition-speed);
+}
+
+.snacks-page__modal-counter-btn:hover {
+  background-color: #444;
+}
+
+.snacks-page__modal-counter-value {
+  font-size: 16px;
+  color: var(--color-light);
+  width: 24px;
+  text-align: center;
+}
+
+/* Кнопка Add to cart */
+.snacks-page__modal-add-btn {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Итоговая часть с ценами */
+.snacks-page__summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.snacks-page__summary-label {
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+.snacks-page__summary-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Список добавленных позиций */
+.snacks-page__cart-list {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.snacks-page__cart-list h4 {
+  margin: 0 0 12px 0;
+  color: var(--color-light);
+  font-size: 16px;
+}
+
+.snacks-page__cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.snacks-page__cart-item-name {
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+.snacks-page__cart-item-price {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.snacks-page__cart-item-remove {
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+
+.snacks-page__cart-item-remove:hover {
+  color: #ff4444;
+}
+
+/* Кнопка Continue */
+.snacks-page__continue {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Адаптив: на узких экранах карточки и модалка */
+@media (max-width: 600px) {
+  .snacks-page__items {
+    gap: 16px;
+  }
+  .snacks-page__item {
+    width: 45%;
+  }
+  .snacks-page__modal {
+    width: 95%;
+    padding: 16px;
+  }
+  .snacks-page__modal-image {
+    height: 150px;
+  }
+  .snacks-page__modal-name {
+    font-size: 18px;
+  }
+  .snacks-page__modal-desc {
+    font-size: 12px;
+  }
+  .snacks-page__modal-size-btn {
+    font-size: 12px;
+  }
+  .snacks-page__modal-counter-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+  .snacks-page__modal-counter-value {
+    font-size: 14px;
+  }
+}
