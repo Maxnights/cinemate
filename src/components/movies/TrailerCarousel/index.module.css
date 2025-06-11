@@ -74,12 +74,18 @@
 /* ------------------------------------------------------------
    Оверлей с инфо и кнопкой
 ------------------------------------------------------------ */
+/* в src/components/TrailerCarousel/index.module.css */
 .infoOverlay {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 2rem; /* базовый отступ от низа */
+  left: 2rem; /* базовый отступ от левого края */
+
+  /* вот эта строка позволяет смещать оверлей куда угодно */
+  transform: translate(100px, 200px);
+  /* ↑ — 20px вправо, 10px вверх; меняйте под себя */
+
   color: var(--clr-light-100);
-  max-width: 25rem; /* 400px */
+  max-width: 20rem;
   z-index: 2;
 }
 
@@ -96,9 +102,9 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 0.5rem 1rem;
-  background-color: var(--clr-primary);
+  background-color: rgb(255, 145, 0);
   color: var(--clr-light-100);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   text-decoration: none;
 }
 
@@ -203,4 +209,18 @@
   .carouselContainer {
     height: 32rem; /* стало ≈512px, подгоните по вкусу */
   }
+}
+
+.ratingBadge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: 4px; /* чуть отступ от времени */
 }

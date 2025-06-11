@@ -36,6 +36,13 @@ const movies = [
       { time: "14:20", format: "2D" },
       { time: "17:30", format: "3D" },
       { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
+      { time: "22:20", format: "3D" },
     ],
 
     language: "English (original)",

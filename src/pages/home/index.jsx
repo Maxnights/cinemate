@@ -11,7 +11,6 @@ export default function HomePage() {
 
   return (
     <main className={`${styles.page} ${styles["home-page"]}`}>
-
       <section className={styles["slider-container"]}>
         <div className="container">
           <Slider />

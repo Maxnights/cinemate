@@ -16,6 +16,7 @@
   padding: 0 16px;
   box-sizing: border-box;
   padding-top: 40px; /* чуть отступаем от шапки */
+  position: relative;
 }
 
 /* Хлебные крошки */
@@ -46,17 +47,20 @@
   font-weight: 500;
 }
 
-/* Галерея изображений */
+/* Галерея изображений — центрируем и делаем по 48% ширины */
 .movie-detail-page__gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* вот чтобы все элементы шли по центру */
   gap: 16px;
   margin-bottom: 32px;
 }
 
+/* Два кадра в ряд, каждый почти по половине ширины */
 .movie-detail-page__gallery-item {
-  flex: 1 1 calc(33.333% - 16px);
-  max-width: calc(33.333% - 16px);
+  flex: 0 0 calc(50% - 16px); /* фиксируем базовый размер */
+  max-width: calc(50% - 16px);
+  /* оставить остальное без изменений */
   border-radius: 8px;
   overflow: hidden;
   background-color: #111;
@@ -104,35 +108,39 @@
   line-height: 1.6;
 }
 
-/* Дополнительные данные (Director, Cast, Release date, Formats) */
+/* Сделаем все Extra-блоки в один столбец (все слева) */
 .movie-detail-page__extra {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-bottom: 40px;
+  flex-direction: column;
+  gap: 0.75rem; /* расстояние между строками */
 }
 
+/* Убираем прежние «50%-шные» установки */
 .movie-detail-page__extra-block {
-  flex: 1 1 calc(50% - 24px);
+  flex: none;
+  width: auto;
 }
 
 .movie-detail-page__extra-label {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
-  color: #aaa;
+  color: #fffefe;
   margin-right: 4px;
 }
 
 .movie-detail-page__extra-value {
   font-size: 14px;
   font-weight: 400;
-  color: #ccc;
+  color: #d1d1d1;
 }
 
 /* Раздел «Showtimes» */
 .movie-detail-page__showtimes {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  position: absolute;
+  top: 21.9rem; /* отступ сверху — подгоните под ваш H1 */
+  right: -0.1rem; /* отступ справа от края контейнера */
+  width: auto; /* чтобы он не растягивался */
+  max-width: none;
 }
 
 .movie-detail-page__showtimes-header {
@@ -166,4 +174,233 @@
   background-color: #e07b00;
   border-color: #e07b00;
   outline: none;
+}
+
+/* tst */
+
+.rating-badge {
+  display: inline-block;
+  margin-left: 0.5rem; /* расстояние от названия */
+  padding: 0.15rem 0.5rem; /* внутр. отступы */
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  vertical-align: middle; /* чтобы центрировалось по линии текста */
+}
+
+/* --- под заголовком, рядом с иконкой --- */
+.movie-detail-page__duration {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #ccc;
+  margin: 0 0 1rem; /* отступ снизу под следующей строкой */
+}
+
+/* сам значок таймера */
+.duration-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  color: var(--color-light);
+}
+
+/* убедитесь, что .movie-detail-page__meta теперь без duration */
+.movie-detail-page__meta {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+/* Помещаем duration и language/subtitles в одну строку */
+.movie-detail-page__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* пространство между длительностью и языком */
+  margin-bottom: 1.5rem; /* отступ под этой строкой */
+}
+
+/* Стили для блока «Длительность» */
+.movie-detail-page__duration {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #ccc;
+}
+.duration-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  stroke: currentColor;
+  color: var(--color-light);
+}
+
+/* Стили для блока «Язык и субтитры» */
+.movie-detail-page__lang-sub {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 17px;
+  color: #ccc;
+}
+
+/* Общие стили для каждого элемента внутри lang-sub */
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Иконка громкости */
+.lang-icon {
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  color: var(--color-light);
+}
+
+/* Бейдж «CC» */
+.cc-icon {
+  display: inline-block;
+  padding: 0.1em 0.3em;
+  font-size: 14px;
+  font-weight: bold;
+  background: #fff;
+  color: #000;
+  border-radius: 0.7em;
+}
+/* Ограничим ширину блока с синопсисом */
+.movie-detail-page__synopsis {
+  max-width: 55ch; /* примерно 60 символов в строке */
+  margin-right: auto; /* чтобы прижимался к левой колонке */
+  line-height: 1.6; /* для лучшей читаемости */
+}
+
+/* В конец src/pages/MovieDetailPage.module.css (или index.module.css) */
+
+/* Ряд сеансов */
+/* в конец src/pages/index.module.css */
+
+.showtimes-body {
+  width: 600px; /* ограничиваем видимую ширину карусели и пилс */
+  overflow: hidden; /* прячет всё, что выходит за эти 600px */
+  margin-top: 1rem;
+}
+
+/* Переносим пилс сразу под карусель внутри этой обёртки */
+.sessionPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+  max-width: 600px; /* ограничиваем сам контейнер */
+  overflow-x: hidden; /* прячем всё, что за пределами */
+}
+
+/* Одна кнопка-пилюля */
+/* базовая пилюля: рамка и скругления */
+.sessionPill {
+  --pill-color: var(--color-light);
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--pill-color);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.sessionPill:hover {
+  background-color: rgba(246, 247, 245, 0.1);
+}
+
+/* левая часть: время */
+.sessionTime {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--pill-color);
+  background: transparent;
+}
+
+/* правая часть: формат */
+.sessionFormat {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-light);
+  background-color: var(--pill-color);
+}
+
+/* модификаторы для формата */
+.pill2d {
+  --pill-color: #ffa600;
+}
+.pill3d {
+  --pill-color: #df0024;
+}
+.pillImax {
+  --pill-color: #0f8bf6;
+}
+
+/* 1) Левую часть — время — делаем с чёрным фоном и белым текстом */
+.sessionTime {
+  background-color: var(
+    --color-dark
+  ); /* чёрный фон (тот же, что и у страницы) */
+  color: var(--color-light); /* белый текст */
+}
+
+/* src/pages/index.module.css */
+
+/* Выравниваем пилюли под карусель */
+.sessionPills {
+  /* отступ слева = ширина Prev-стрелки (32px) + её margin-right (8px) */
+  margin-left: 40px;
+
+  /* (опционально) задаём ту же максимальную ширину, что и у маски */
+  max-width: 500px; /* или ваш реальный размер маски */
+}
+
+.movie-detail-page__trailer {
+  margin-top: 1.5rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+/* src/pages/index.module.css */
+
+.movie-detail-page {
+  position: relative;
+  /* убираем “серый” фон — пусть его не будет, 
+     или задаём прозрачным, если нужен просто фон страницы */
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* контейнер с вашим контентом должен быть поверх размытия */
+.movie-detail-page__container {
+  position: relative;
+  z-index: 2;
+}
+
+/* размытие под контентом */
+.movie-detail-page__blur-container {
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  bottom: 0;
+  height: 55vh;
+
+  pointer-events: none;
+  z-index: 1; /* меньше, чем у __container */
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 70%),
+    var(--bg-image) center bottom / cover no-repeat;
+
+  filter: blur(60px) brightness(1);
+  opacity: 0.6;
 }

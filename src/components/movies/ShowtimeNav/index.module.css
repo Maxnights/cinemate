@@ -10,14 +10,19 @@
    - промежуток между стрелками и списком кнопок
    - padding, чтобы крайние кнопки не прилипали к краям экрана
 */
-.showtime-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
+/* 1) Делаем саму панель навигации flex-контейнером */
+/* Обёртка всего навигационного блока */
+/* 1) Делаем саму панель навигации flex-контейнером */
+.showtime-nav__mask {
+  position: relative;
+  overflow: hidden;
+
+  /* убираем растяжение */
+  flex: 0 0 600px; /* видимая ширина карусели */
+  width: 500px; /* подгоните под ваш макет */
+  min-width: 0; /* важно для flex-элемента */
+
+  margin: 0 8px; /* отступы под стрелки */
 }
 
 /* -----------------------------------------------------------------------------
@@ -77,10 +82,12 @@
   align-items: center;
   gap: 12px;
   /* Если хотите, чтобы список сам прокручивался мышью/тачем, раскомментируйте: */
-  /* overflow-x: auto; */
-  /* scrollbar-width: none; */ /* Firefox */
-  /* -ms-overflow-style: none; */ /* IE 10+ */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-shrink: 0;
 }
+
 .showtime-nav__date-list::-webkit-scrollbar {
   display: none; /* Safari и Chrome */
 }
@@ -156,4 +163,63 @@
 /* Сделаем круглее с повышенной специфичностью */
 .showtime-nav .showtime-nav__date-list > .showtime-nav__date-button {
   border-radius: 10px !important;
+}
+
+/* 2) Добавляем градиентную маску справа */
+.showtime-nav__date-list {
+  /* стандартный синтаксис */
+  mask-image: linear-gradient(to right, black 80%, transparent);
+  /* WebKit-поддержка */
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent);
+}
+
+/* mask wrapper hides anything overflowing to the right */
+.showtime-nav__mask {
+  position: relative;
+  overflow: hidden;
+  flex: 1; /* занимает всё пространство между стрелками */
+  min-width: 0; /* важно для flex-элемента, чтобы overflow:hidden работал */
+  margin: 0 8px; /* отступы под стрелки */
+}
+
+/* keep the date list wide and scrollable */
+.showtime-nav__date-list {
+  display: flex;
+  gap: 12px;
+  width: max-content; /* не сжимается, а остаётся по ширине контента */
+  overflow-x: auto; /* чтобы JS-прокрутка работала, и можно было тач/колесо */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.showtime-nav__date-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Плавный градиент-фейд справа */
+/* Обёртка должна быть позиционируемой */
+.showtime-nav__mask {
+  position: relative;
+}
+
+.showtime-nav__fade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px; /* длина зоны «исчезания» */
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    var(--color-dark) 90%
+  );
+  z-index: 2;
+}
+
+/* ??????? */
+/* Обёртка всего навигатора — флекс, середина по вертикали */
+.showtime-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* или flex-start/flex-end по необходимости */
 }

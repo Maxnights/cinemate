@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./index.module.css";
 
-// Ленивый плеер
+// Ленивый плеер (убрали режим light)
 const ReactPlayer = lazy(() => import("react-player"));
 
 // Кастомная стрелка
@@ -32,45 +32,62 @@ const Arrow = memo(({ dir, onClick }) => (
   </button>
 ));
 
+// Один слайд
 const Slide = memo(({ movie, isPlaying, onPlay }) => (
   <div>
     <div className={styles.playerWrapper}>
-      {!isPlaying && movie.logo && (
-        <img
-          src={movie.logo}
-          alt={`${movie.title} logo`}
-          className={styles.logo}
-        />
+      {/** 1) Наше превью + диммер + кнопка */}
+      {!isPlaying && (
+        <div className={styles.posterWrapper}>
+          <img
+            src={movie.previewUrl}
+            alt={`${movie.title} preview`}
+            className={styles.posterImage}
+          />
+          <div className={styles.posterDim} />
+          <button className={styles.customPlayButton} onClick={onPlay}>
+            <span className={styles.playIconSymbol}>▶</span>
+          </button>
+          {movie.logo && (
+            <img
+              src={movie.logo}
+              alt={`${movie.title} logo`}
+              className={styles.logo}
+            />
+          )}
+        </div>
       )}
-      <Suspense fallback={<div className={styles.loader}>Loading…</div>}>
-        <ReactPlayer
-          url={movie.trailerUrl}
-          light={movie.previewUrl}
-          playing={isPlaying}
-          playIcon={
-            <button className={styles.customPlayButton} onClick={onPlay}>
-              <span className={styles.playIconSymbol}>▶</span>
-            </button>
-          }
-          width="100%"
-          height="100%"
-          controls
-        />
-      </Suspense>
-    </div>
 
-    {!isPlaying && (
-      <div className={styles.infoOverlay}>
-        <h2>{movie.title}</h2>
-        <p>
-          {movie.genres.join(" • ")} • {movie.duration} • {movie.rating}
-        </p>
-        <p>{movie.synopsis}</p>
-        <Link to={`/movies/${movie.slug}`} className={styles.btnBuy}>
-          Buy tickets
-        </Link>
-      </div>
-    )}
+      {/** 2) Когда играем – настоящий плеер */}
+      {isPlaying && (
+        <Suspense fallback={<div className={styles.loader}>Loading…</div>}>
+          <div className={styles.reactWrapper}>
+            <ReactPlayer
+              url={movie.trailerUrl}
+              playing
+              controls
+              width="100%"
+              height="100%"
+            />
+          </div>
+        </Suspense>
+      )}
+
+      {/** 3) Инфо-оверлей поверх превью */}
+      {!isPlaying && (
+        <div className={styles.infoOverlay}>
+          <h2>{movie.title}</h2>
+          <p>
+            {movie.genres.join(" • ")} • {movie.duration} •{" "}
+            <span className={styles.ratingBadge}>{movie.rating}</span>
+          </p>
+          <p>{movie.synopsis}</p>
+          <Link to={`/movies/${movie.slug}`} className={styles.btnBuy}>
+            Buy tickets
+          </Link>
+        </div>
+      )}
+    </div>
   </div>
 ));
 
@@ -87,8 +104,8 @@ export default function TrailerCarousel() {
       slidesToShow: 1,
       slidesToScroll: 1,
       adaptiveHeight: false,
-      prevArrow: <Arrow dir="prev" />,
-      nextArrow: <Arrow dir="next" />,
+      prevArrow: <Arrow dir="prev" onClick={stopAll} />,
+      nextArrow: <Arrow dir="next" onClick={stopAll} />,
       beforeChange: stopAll,
     }),
     [stopAll]
