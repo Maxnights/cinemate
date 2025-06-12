@@ -8,6 +8,7 @@ import MovieDetailPage from "./pages/movies/detail/index";
 import BookingPage from "./pages/booking/index";
 import LoginPage from "./pages/login";
 import SignupPage from "./pages/signup";
+import QuickBookingPage from "./pages/quick-booking";
 import NotFoundPage from "./pages/not-found/index";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 
@@ -29,6 +30,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/quick-booking" element={<QuickBookingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<NotFoundPage />} />
