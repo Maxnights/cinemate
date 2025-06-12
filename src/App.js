@@ -6,7 +6,10 @@ import HomePage from "./pages/home/index";
 import MoviesPage from "./pages/movies/index";
 import MovieDetailPage from "./pages/movies/detail/index";
 import BookingPage from "./pages/booking/index";
+import LoginPage from "./pages/login";
+import SignupPage from "./pages/signup";
 import NotFoundPage from "./pages/not-found/index";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
   return (
@@ -18,7 +21,16 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:slug" element={<MovieDetailPage />} />
-          <Route path="/booking/*" element={<BookingPage />} />
+          <Route
+            path="/booking/*"
+            element={
+              <ProtectedRoute>
+                <BookingPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
