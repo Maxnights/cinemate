@@ -20,11 +20,18 @@ export default function LoginPage() {
 
   return (
     <div className={styles["auth-page"]}>
+
       <div className={styles["auth-page__container"]}>
         <form className={styles["auth-form"]} onSubmit={handleSubmit}>
           <h2 className={styles["auth-title"]}>Log in</h2>
           <label className={styles["auth-label"]}>
             Email
+
+      <form className={styles["auth-form"]} onSubmit={handleSubmit}>
+        <h2 className={styles["auth-title"]}>Log in</h2>
+        <label className={styles["auth-label"]}>
+          Email
+testo
           <input
             type="email"
             value={email}
@@ -49,9 +56,13 @@ export default function LoginPage() {
         <Link to="/signup" className={styles["auth-link"]}>
           No account? Sign up
         </Link>
+
         </form>
       </div>
       <div className={styles["auth-page__blur-container"]} />
+
+      </form>
+
     </div>
   );
 }

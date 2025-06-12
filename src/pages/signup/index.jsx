@@ -21,9 +21,14 @@ export default function SignupPage() {
 
   return (
     <div className={styles["auth-page"]}>
+
       <div className={styles["auth-page__container"]}>
         <form className={styles["auth-form"]} onSubmit={handleSubmit}>
           <h2 className={styles["auth-title"]}>Sign up</h2>
+
+      <form className={styles["auth-form"]} onSubmit={handleSubmit}>
+        <h2 className={styles["auth-title"]}>Sign up</h2>
+
         <label className={styles["auth-label"]}>
           Name
           <input
@@ -60,9 +65,13 @@ export default function SignupPage() {
         <Link to="/login" className={styles["auth-link"]}>
           Already have an account? Log in
         </Link>
+
         </form>
       </div>
       <div className={styles["auth-page__blur-container"]} />
+
+      </form>
+
     </div>
   );
 }
