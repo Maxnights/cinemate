@@ -83,10 +83,11 @@
     padding-top: 80px;
     padding-bottom: 20px;
   }
-  .auth-form {
-    max-width: none;
-    width: 90%;
-    padding: 16px;
-    height: 35vh;
-  }
+.auth-form {
+  width: 90%;
+  padding: 16px;
+  padding-bottom: 40px; 
+  box-sizing: border-box;
+  height: auto;
+ }
 }
