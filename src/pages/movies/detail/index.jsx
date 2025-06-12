@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
 import moviesData from "../../../data/movies";
 import ShowtimeNav from "../../../components/movies/ShowtimeNav";
 import styles from "./index.module.css";
@@ -12,6 +13,7 @@ import showaBg from "../../../assets/images/backgrounds/showa-bg.jpg";
 export default function MovieDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const movie = moviesData.find((m) => m.slug === slug);
   if (!movie) {
@@ -180,9 +182,15 @@ export default function MovieDetailPage() {
               </h2>
               <button
                 className={`btn btn--primary ${styles["movie-detail-page__buy-button"]}`}
-                onClick={() =>
-                  navigate("/booking/tickets", { state: { movieSlug: slug } })
-                }
+                onClick={() => {
+                  const dest = "/booking/tickets";
+                  const destState = { movieSlug: slug };
+                  if (!user) {
+                    navigate("/login", { state: { from: { pathname: dest, state: destState } } });
+                  } else {
+                    navigate(dest, { state: destState });
+                  }
+                }}
               >
                 Buy tickets
               </button>
@@ -200,11 +208,15 @@ export default function MovieDetailPage() {
                   <button
                     key={i}
                     className={`${styles.sessionPill} ${pillClass}`}
-                    onClick={() =>
-                      navigate("/booking/tickets", {
-                        state: { movieSlug: slug, time, format },
-                      })
-                    }
+                    onClick={() => {
+                      const dest = "/booking/tickets";
+                      const destState = { movieSlug: slug, time, format };
+                      if (!user) {
+                        navigate("/login", { state: { from: { pathname: dest, state: destState } } });
+                      } else {
+                        navigate(dest, { state: destState });
+                      }
+                    }}
                   >
                     <span className={styles.sessionTime}>{time}</span>
                     <span className={styles.sessionFormat}>{format}</span>
