@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 
 export default function SignupPage() {
-  const { login } = useAuth();
+  const { login, loginAsGuest } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState("");
@@ -21,6 +21,10 @@ export default function SignupPage() {
     e.preventDefault();
     // simple sign up -> log user in
     login({ email }, () => navigate(from, { replace: true }));
+  };
+
+  const handleGuest = () => {
+    loginAsGuest(() => navigate(from, { replace: true }));
   };
 
   return (
@@ -59,6 +63,9 @@ export default function SignupPage() {
         </button>
 
       </form>
+      <button onClick={handleGuest} style={{ marginTop: "8px" }}>
+        Continue as guest
+      </button>
       <p>
         Already have an account? <Link to="/login">Login</Link>
       </p>
