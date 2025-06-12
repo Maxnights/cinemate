@@ -1,6 +1,7 @@
 /*  src/components/movies/Slider/index.jsx  */
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
 import SlickSlider from "react-slick";
 import moviesData from "../../../data/movies";
 import styles from "./index.module.css";
@@ -10,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function Slider() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   /* custom arrows have to see `styles`, поэтому объявляем их внутри */
   const PrevArrow = ({ onClick }) => (
@@ -74,7 +76,14 @@ export default function Slider() {
 
                 <button
                   className={styles["slide__buy-button"]}
-                  onClick={() => navigate(`/movies/${movie.slug}`)}
+                  onClick={() => {
+                    const dest = `/movies/${movie.slug}`;
+                    if (!user) {
+                      navigate('/login', { state: { from: { pathname: dest } } });
+                    } else {
+                      navigate(dest);
+                    }
+                  }}
                 >
                   Buy tickets
                 </button>

@@ -1,11 +1,13 @@
 /*  src/components/movies/ShowtimesList/index.jsx  */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
 import movies from '../../../data/movies';
 import styles from './index.module.css';
 
 export default function ShowtimesList() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [activeTrailer, setActiveTrailer] = useState(null);
 
   return (
@@ -63,11 +65,15 @@ export default function ShowtimesList() {
                       className={`${styles['showtime-pill']} ${
                         styles[`format-${format.toLowerCase()}`]
                       }`}
-                      onClick={() =>
-                        navigate('/booking/tickets', {
-                          state: { movieSlug: m.slug, time, format },
-                        })
+                    onClick={() => {
+                      const dest = '/booking/tickets';
+                      const destState = { movieSlug: m.slug, time, format };
+                      if (!user) {
+                        navigate('/login', { state: { from: { pathname: dest, state: destState } } });
+                      } else {
+                        navigate(dest, { state: destState });
                       }
+                    }}
                     >
                       <span className={styles['pill__time']}>{time}</span>
                       <span className={styles['pill__format']}>
