@@ -10,13 +10,14 @@
 2. [Folder Structure](#folder-structure)
 3. [Pages & Routing](#pages--routing)
 4. [State Management](#state-management)
-5. [Data & API Layer](#data--api-layer)
-6. [Styling System](#styling-system)
-7. [Testing Strategy](#testing-strategy)
-8. [CI / CD Pipeline](#ci--cd-pipeline)
-9. [Deployment Guide](#deployment-guide)
-10. [Extending the Project](#extending-the-project)
-11. [Glossary](#glossary)
+5. [Guest Sessions](#guest-sessions)
+6. [Data & API Layer](#data--api-layer)
+7. [Styling System](#styling-system)
+8. [Testing Strategy](#testing-strategy)
+9. [CI / CD Pipeline](#ci--cd-pipeline)
+10. [Deployment Guide](#deployment-guide)
+11. [Extending the Project](#extending-the-project)
+12. [Glossary](#glossary)
 
 ---
 
@@ -76,6 +77,12 @@ Routes are declared in `src/index.jsx`. Add a new page by:
 | Remote data           | Placeholder fetch util    | future: SWR / React Query |
 
 > No Redux here; the app is intentionally lightweight. Introduce Zustand or React Query if the domain grows.
+
+---
+
+## Guest Sessions
+
+Visitors can skip account creation by choosing **Continue as guest** on the login or signup pages. The app stores `{ guest: true }` in `localStorage` and `ProtectedRoute` treats this as an authenticated session. Logging out removes the entry.
 
 ---
 
@@ -153,4 +160,4 @@ Adjust `vite.config.js → base` if deploying under a sub‑folder.
 
 ---
 
-*Last updated: 2025‑06‑10*
+*Last updated: 2025‑06‑12*

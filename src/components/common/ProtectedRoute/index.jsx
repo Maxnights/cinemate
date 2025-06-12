@@ -6,7 +6,9 @@ export default function ProtectedRoute({ children }) {
   const { user } = useAuth();
   const location = useLocation();
 
-  if (!user) {
+  const isGuest = user?.guest;
+
+  if (!user && !isGuest) {
     return <Navigate to="/signup" state={{ from: location }} replace />;
   }
 

@@ -20,6 +20,15 @@ export function AuthProvider({ children }) {
     if (callback) callback();
   };
 
+  const loginAsGuest = (callback) => {
+    const guestUser = { guest: true };
+    setUser(guestUser);
+    try {
+      localStorage.setItem("user", JSON.stringify(guestUser));
+    } catch (e) {}
+    if (callback) callback();
+  };
+
   const logout = (callback) => {
     setUser(null);
     try {
@@ -29,7 +38,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, loginAsGuest, logout }}>
       {children}
     </AuthContext.Provider>
   );
