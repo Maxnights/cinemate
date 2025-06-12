@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import styles from "./index.module.css";
 
 export default function SignupPage() {
   const { login } = useAuth();
@@ -18,18 +19,16 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="page" style={{ padding: "40px" }}>
+    <div className={`page ${styles["signup-page"]}`}>
       <h2>Sign Up</h2>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-      >
+      <form onSubmit={handleSubmit} className={styles["signup-page__form"]}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="input"
         />
         <input
           type="password"
@@ -37,8 +36,11 @@ export default function SignupPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className="input"
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="btn btn--primary">
+          Sign Up
+        </button>
       </form>
       <p>
         Already have an account? <Link to="/login">Login</Link>

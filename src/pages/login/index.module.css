@@ -1,0 +1,11 @@
+/* src/pages/login/index.module.css */
+
+.page.login-page {
+  padding: 40px;
+}
+
+.login-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
