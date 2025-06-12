@@ -231,7 +231,7 @@
   z-index: 1;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .showtimes-list__item {
     flex-direction: column;
     gap: 1rem;
@@ -242,15 +242,16 @@
     margin: 0 auto;
   }
   .showtimes-list__content {
-    width: 100%;
+    width: 90%;
   }
-  .showtimes-list__times {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    flex-wrap: unset;
-  }
-  .showtime-pill {
-    width: 100%;
-    justify-content: center;
-  }
+.showtimes-list__times {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
 }
+.showtime-pill {
+  width: auto;
+  justify-self: center;
+}
+}
+
