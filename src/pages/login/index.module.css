@@ -3,6 +3,26 @@
   padding-bottom: 40px;
   display: flex;
   justify-content: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.auth-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 70%),
+    url("../../assets/images/backgrounds/showa-bg.jpg") center bottom/cover
+      no-repeat;
+  filter: blur(60px) brightness(1.3);
+  opacity: 0.6;
 }
 
 .auth-form {
