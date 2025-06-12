@@ -245,7 +245,12 @@
     width: 100%;
   }
   .showtimes-list__times {
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: unset;
+  }
+  .showtime-pill {
+    width: 100%;
+    justify-content: center;
   }
 }
