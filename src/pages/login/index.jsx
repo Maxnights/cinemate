@@ -31,15 +31,8 @@ export default function LoginPage() {
     <div className={`page ${styles["login-page"]}`}>
       <h2>Login</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-      >
-        <Input
-
       <form onSubmit={handleSubmit} className={styles["login-page__form"]}>
-        <input
-
+        <Input
           type="email"
           placeholder="Email"
           value={email}
@@ -57,11 +50,6 @@ export default function LoginPage() {
         />
 
         <Button type="submit">Login</Button>
-
-        <button type="submit" className="btn btn--primary">
-          Login
-        </button>
-
       </form>
       <button onClick={handleGuest} style={{ marginTop: "8px" }}>
         Continue as guest

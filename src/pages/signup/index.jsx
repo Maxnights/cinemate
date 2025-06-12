@@ -31,15 +31,8 @@ export default function SignupPage() {
     <div className={`page ${styles["signup-page"]}`}>
       <h2>Sign Up</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-      >
-        <Input
-
       <form onSubmit={handleSubmit} className={styles["signup-page__form"]}>
-        <input
-
+        <Input
           type="email"
           placeholder="Email"
           value={email}
@@ -57,11 +50,6 @@ export default function SignupPage() {
         />
 
         <Button type="submit">Sign Up</Button>
-
-        <button type="submit" className="btn btn--primary">
-          Sign Up
-        </button>
-
       </form>
       <button onClick={handleGuest} style={{ marginTop: "8px" }}>
         Continue as guest
