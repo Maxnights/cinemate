@@ -1,1 +1,59 @@
-@import "../login/index.module.css";
+.auth-page {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-form {
+  background-color: var(--color-dark-alt);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--color-light);
+  text-align: center;
+}
+
+.auth-label {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.auth-input:focus {
+  border-color: var(--color-primary);
+}
+
+.auth-button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+.auth-link {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+}
