@@ -125,3 +125,18 @@
   font-size: 15px;
   color: #888;
 }
+@media (max-width: 600px) {
+  .footer__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer__subscribeForm {
+    flex-direction: column;
+  }
+  .footer__socialLinks {
+    justify-content: center;
+  }
+  .footer__links {
+    align-items: center;
+  }
+}

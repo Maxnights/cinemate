@@ -32,7 +32,10 @@
   font-weight: 600;
   color: #b3b3b3; /* "Cine" */
   text-decoration: none;
-  transition: color 0.2s ease, filter 0.2s ease, text-shadow 0.2s ease;
+  transition:
+    color 0.2s ease,
+    filter 0.2s ease,
+    text-shadow 0.2s ease;
 }
 
 /* 2) При ховере по всему лого — и по белой, и по градиентной части */
@@ -53,7 +56,8 @@
 .logo--gradient:hover,
 .logo:hover .logo--gradient {
   /* лёгкое свечение того же цвета, что и градиент */
-  text-shadow: 0 0 8px rgba(247, 143, 30, 0.878),
+  text-shadow:
+    0 0 8px rgba(247, 143, 30, 0.878),
     0 0 16px rgba(234, 135, 6, 0.4);
 }
 
@@ -117,8 +121,10 @@
   text-decoration: none;
   border: 2px solid var(--color-primary);
   border-radius: 10px;
-  transition: background-color var(--transition-speed),
-    color var(--transition-speed), border-color var(--transition-speed);
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed),
+    border-color var(--transition-speed);
 }
 
 .quickBooking:hover,
@@ -142,4 +148,29 @@
 /* Активная ссылка всегда приоритетнее */
 .activeLink {
   color: var(--color-primary) !important;
+}
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+  .left {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .quickBooking {
+    width: 100%;
+    text-align: center;
+  }
 }
