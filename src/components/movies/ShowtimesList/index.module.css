@@ -231,7 +231,7 @@
   z-index: 1;
 }
 
-@media (max-width: 411px) {
+@media (max-width: 0px) {
   .showtimes-list__item {
     flex-direction: column;
     gap: 1rem;
