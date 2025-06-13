@@ -78,3 +78,16 @@
   margin-top: 16px;
   text-align: center;
 }
+@media (max-width: 600px) {
+  .auth-page {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+.auth-form {
+  width: 90%;
+  padding: 16px;
+  padding-bottom: 10px; 
+  box-sizing: border-box;
+  height: auto;
+}
+}

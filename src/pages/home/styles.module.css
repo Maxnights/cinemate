@@ -170,7 +170,7 @@
 =============================================================================*/
 @media (max-width: 600px) {
   .page.home-page {
-    padding-top: 80px;
+    padding-top: 0px;
     padding-bottom: 20px;
   }
   .showtimes-section__controls {
