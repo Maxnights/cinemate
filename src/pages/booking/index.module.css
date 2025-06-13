@@ -1,11 +1,10 @@
 /* src/pages/BookingPage.css */
 
 .booking-page {
-  padding-top: 100px; 
-  padding-bottom: 423px; 
+  padding-top: 100px;
+  padding-bottom: 423px;
   background-color: var(--color-dark);
   color: var(--color-light);
-  
 }
 
 .booking-page__container {
@@ -31,4 +30,13 @@
       no-repeat;
   filter: blur(60px) brightness(1.3);
   opacity: 0.3;
+}
+@media (max-width: 600px) {
+  .booking-page {
+    padding-top: 80px;
+    padding-bottom: 200px;
+  }
+  .booking-page__container {
+    padding: 0 16px;
+  }
 }

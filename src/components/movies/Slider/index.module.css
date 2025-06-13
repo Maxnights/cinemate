@@ -95,7 +95,10 @@
   font-weight: 600;
   color: rgba(255, 166, 0, 0.95);
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 .slide__buy-button:hover {
   background-color: rgba(255, 166, 0, 0.16);
@@ -125,7 +128,10 @@
   justify-content: center;
   border-radius: 50%;
 
-  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -194,4 +200,27 @@
   line-height: 1;
   vertical-align: middle;
   margin-left: 4px; /* чуть отступ от времени */
+}
+
+@media (max-width: 600px) {
+  .custom-arrow {
+    width: 48px;
+    height: 48px;
+    font-size: 64px;
+  }
+  .custom-prev {
+    left: 25px;
+  }
+  .custom-next {
+    right: 25px;
+  }
+  .slide__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .slide__buy-button {
+    position: static;
+    margin-top: 8px;
+  }
 }
