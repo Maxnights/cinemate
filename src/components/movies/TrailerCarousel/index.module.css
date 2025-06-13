@@ -211,6 +211,26 @@
   }
 }
 
+@media (max-width: 600px) {
+  .carouselContainer {
+    height: 24rem;
+  }
+  :global(.slick-list) {
+    min-height: 24rem;
+  }
+  .customArrow {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+  .customPrev {
+    left: 8px;
+  }
+  .customNext {
+    right: 8px;
+  }
+}
+
 .ratingBadge {
   display: inline-block;
   padding: 2px 6px;
