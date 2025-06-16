@@ -6,7 +6,7 @@ Adaptive online cinema built with **React 18**, **Vite** and **Bun**. Browse mov
 
 ## Live demo
 
-[https://cinemate-teal.vercel.app](https://cinemate-teal.vercel.app)
+[https://cinemate-ashen.vercel.app/](https://cinemate-ashen.vercel.app/)
 
 ---
 
