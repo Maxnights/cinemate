@@ -1,5 +1,3 @@
-// src/pages/MoviesPage.js
-
 import React, { useState, useMemo, useRef } from "react";
 import { FaSearch, FaChevronDown } from "react-icons/fa";
 import moviesData from "../../data/movies";
@@ -81,7 +79,7 @@ export default function MoviesPage() {
         {/* 1) Верхний ряд: заголовок + поиск + Filters */}
         <div className={styles["movies-page__controls"]}>
           <h1 className={styles["movies-page__title"]}>All Movies</h1>
-          <div className={styles.controls__right}>
+          <div className={styles.controls__row}>
             <div className={styles["search-wrapper"]}>
               <FaSearch className={styles["search-icon"]} />
               <input
