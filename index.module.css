@@ -1,0 +1,324 @@
+/* =============================================================================
+   index.module.css — стили для TrailerCarousel (CSS-модуль)
+============================================================================== */
+
+/* ------------------------------------------------------------
+   Ограничиваем ширину всей секции и центрируем
+------------------------------------------------------------ */
+.trailerCarousel {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  margin-block-end: 2rem;
+  overflow: visible;
+  background: transparent;
+  filter: none;
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   Контейнер карусели: 100% от секции, ограничен шириной, центр
+   Увеличили высоту для большего контента
+------------------------------------------------------------ */
+.carouselContainer {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  border-radius: 1rem;
+  height: 40rem; /* было 30rem, стало 40rem (≈640px) */
+  overflow: hidden;
+}
+
+/* Скрываем и обрезаем углы у слайдов */
+.carouselContainer :global(.slick-list),
+.carouselContainer :global(.slick-slide > div) {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+/* ------------------------------------------------------------
+   Видео (16:9) внутри контейнера
+------------------------------------------------------------ */
+.playerWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+}
+
+.playerWrapper > div,
+.playerWrapper > div > div {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.playerWrapper > div > div > iframe {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100%;
+  height: 100%;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.playerWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* ------------------------------------------------------------
+   Оверлей с инфо и кнопкой
+------------------------------------------------------------ */
+/* в src/components/TrailerCarousel/index.module.css */
+.infoOverlay {
+  position: absolute;
+  bottom: 2rem; /* базовый отступ от низа */
+  left: 2rem; /* базовый отступ от левого края */
+
+  /* вот эта строка позволяет смещать оверлей куда угодно */
+  transform: translate(100px, 200px);
+  /* ↑ — 20px вправо, 10px вверх; меняйте под себя */
+
+  color: var(--clr-light-100);
+  max-width: 20rem;
+  z-index: 2;
+}
+
+.infoOverlay h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.infoOverlay p {
+  margin: 0.5rem 0;
+}
+
+.btnBuy {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 145, 0);
+  color: var(--clr-light-100);
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------
+   Кастомная кнопка “Play”
+------------------------------------------------------------ */
+.customPlayButton {
+  /* общий размер круга */
+  width: 64px;
+  height: 64px;
+
+  /* фон и обводка */
+  background-color: orange;
+  border: 4px solid var(--clr-light-100);
+  border-radius: 50%;
+
+  /* Убираем все внутренние отступы */
+  padding: 0;
+  /* Центрируем содержимое */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Подгоняем сам символ ▶ */
+  font-size: 2.5rem;
+  line-height: 5; /* важнее всего для вертикального центрирования */
+  color: var(--clr-light-100);
+
+  /* если символ всё ещё чуть выше/ниже, можно чуть сдвинуть: */
+  /* transform: translateY(1px); */
+
+  /* позиционирование по центру видео-контейнера */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.playIconSymbol {
+  display: inline-block;
+  /* сдвигает ▶ вправо на 4px; меняйте значение под свой вкус */
+  transform: translateX(4px);
+}
+
+/* ------------------------------------------------------------
+   Деактивируем стандартные стрелки Slick и задаём свои
+------------------------------------------------------------ */
+:global(.slick-prev),
+:global(.slick-next) {
+  display: none !important;
+}
+
+.customArrow {
+  all: unset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 55px;
+  color: rgba(255, 255, 255, 0.6);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color var(--ease-fast), transform var(--ease-fast);
+  z-index: 100;
+}
+
+.customPrev {
+  left: 20px;
+}
+
+.customNext {
+  right: 20px;
+}
+
+.customArrow:hover {
+  color: var(--clr-primary);
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* ------------------------------------------------------------
+   Сброс inline-height у Slick, чтобы не «сжималось»
+------------------------------------------------------------ */
+:global(.slick-list),
+:global(.slick-track),
+:global(.slick-slide) {
+  height: auto;
+}
+
+:global(.slick-list) {
+  min-height: 35rem; /* теперь минимум 40rem */
+}
+
+/* ------------------------------------------------------------
+   Адаптив под планшеты/мобилки
+------------------------------------------------------------ */
+@media (max-width: 600px) {
+.trailerCarousel {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  margin-block-end: 0rem;
+  overflow: visible;
+  background: transparent;
+  filter: none;
+  opacity: 1;
+  margin-block-end: -5rem;
+}
+
+/* ------------------------------------------------------------
+   Контейнер карусели: 100% от секции, ограничен шириной, центр
+   Увеличили высоту для большего контента
+------------------------------------------------------------ */
+.carouselContainer {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  border-radius: 1rem;
+  height: 18rem; /* было 30rem, стало 40rem (≈640px) */
+  overflow: hidden;
+}
+.customArrow {
+  all: unset;
+  position: absolute;
+  top: 18%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.321);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color var(--ease-fast), transform var(--ease-fast);
+  z-index: 100;
+}
+
+.customPrev {
+  left: 10px;
+}
+
+.customNext {
+  right:10px;
+}
+
+.customArrow:hover {
+  color: var(--clr-primary);
+  transform: translateY(-50%) scale(1.3);
+}
+
+}
+
+.ratingBadge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: 4px; /* чуть отступ от времени */
+}
+
+
+@media (max-width: 600px) {
+  .infoOverlay h2 {
+    margin: 0;
+    font-size: 0.7rem;
+    margin-left: 10px;
+  }
+  .infoOverlay p {
+    margin: 0.5rem 0;
+    font-size: 0.5rem;
+    max-width: 25ch;
+    margin-left: 10px;
+  }
+  .btnBuy {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(255, 145, 0);
+    color: var(--clr-light-100);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.5rem;
+    margin-left: 10px;
+  }
+  .infoOverlay {
+    z-index: 10;      /* убедитесь, что оверлей поверх видео */
+    transform: none;  /* сбросьте смещение, если нужно */
+    bottom: 1rem;     /* подберите положение */
+    left: 1rem;
+    font-size: 0.5rem;
+  }
+  .ratingBadge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-left: 4px; /* чуть отступ от времени */
+}
+}
