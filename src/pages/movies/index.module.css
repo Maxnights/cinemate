@@ -93,12 +93,51 @@
     flex-direction: column;
     align-items: flex-start;
   }
+    .controls__row {
+    flex-direction: line;
+    align-items: stretch;
+  }
   .movies-page__search-input {
     width: 100%;
     margin-top: 1rem;
     max-width: none;
+      }
+  /* Make status tabs fit mobile screens */
+  .movies-page__status-tabs-row {
+    width: 100%;
   }
+  .movies-page__status-tabs-row .status-tab {
+    width: calc(50% + 1px); /* share row equally */
+    flex: 0 0 calc(50% + 1px);
+    font-size: 0.9rem;
+  }
+  .movies-page__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
+/* Ряд с поиском и фильтрами */
+.controls__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+.search-wrapper {
+  position: relative; /* чтобы сдвиг работал */
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 18px;
+  margin-left: -95px
+}
+  
+}
+
+
+
 
 /* контейнер для поля + иконки */
 .search-wrapper {
@@ -150,10 +189,24 @@
   gap: 1rem;
 }
 
+@media (max-width: 600px) {
+  .search-icon {
+  position: absolute;
+  left: 12px !important;
+  top: 65% !important;
+  transform: translateY(-50%);
+  pointer-events: none; /* клики “сквозь” */
+  font-size: 1rem; /* подгоните под ваш дизайн */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+}
+
 /* Поиск */
 .search-wrapper {
   position: relative; /* чтобы сдвиг работал */
-  width: 300px;
+  width: 350px;
   /* вот здесь укажи свой отступ в пикселях */
   left: 95px; /* сдвигаем вправо на 200px */
 }
